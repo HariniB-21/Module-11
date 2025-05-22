@@ -1,5 +1,4 @@
-# Module-11
-# 19CS301-Module3
+# 19CS301-Module11
 ### Register No - 212222020008
 ### Name - Harini B
 
@@ -7,57 +6,19 @@
 ### Aim: To Write a function to traverse the linked list and display it in the following format.
 ### Algorithm:
 
-1. Start
-2. Create a Node class:
-Contains two attributes:
+STEP 1: Start.
 
-data: stores the value of the node
+STEP 2: Create a Node class.
 
-next: points to the next node (initially None)
+STEP 3: Create a SinglyLinkedList class.
 
-3. Create a SinglyLinkedList class:
-Contains two attributes:
+STEP 4: Define a method addNode(data).
 
-head: points to the first node (initially None)
+STEP 5: Define a method display().
 
-tail: points to the last node (initially None)
+STEP 6: In the main program, create an object of SinglyLinkedList, read the number of nodes, add nodes using addNode, and call display().
 
-4. Define a method addNode(data):
-If the list is empty (i.e., tail is None):
-
-Create a new node and set both head and tail to it
-
-Else:
-
-Create a new node
-
-Link the current tail to this new node
-
-Update tail to the new node
-
-5. Define a method display():
-Start from the head
-
-While the current node is not None:
-
-Print the data
-
-Move to the next node
-
-6. Main Program:
-Create an object of SinglyLinkedList
-
-Read an integer n (number of nodes)
-
-Repeat n times:
-
-Read node data
-
-Add the data to the linked list using addNode(data)
-
-Call the display() method to print the linked list
-
-7. End
+STEP 7: End.
 
 ### Program:
 ```
@@ -166,72 +127,153 @@ cl.addAtStart(4)
 cl.display()    
 ```
 ### OUTPUT:
-![image](https://github.com/user-attachments/assets/5cc5d231-d1fd-40ab-bf3d-739d3f7a654c)
+![image](https://github.com/user-attachments/assets/1be029f8-d994-4aaa-bb21-dc32ae811476)
 
 ### Result: Thus, the given program is implemented and executed successfully .
 
-# ExNo: 3.3 List
-### Aim: To write a non parameterized function to print the list in descending order that is entered by the user.
+# ExNo: 11.3 
+### Aim: To Write a python program to print the elements in forward and reverse direction in doubly linked list. 
+
 ### Algorithm:
 
-**STEP 1:** Start.
+STEP 1: Start.
 
-**STEP 2:** Define a function `sortlist()`.
+STEP 2: Create a Node class with data, next, and prev attributes.
 
-**STEP 3:** Inside the function:
-- Get a list input from the user using `eval(input())` and store it in variable `a`.
+STEP 3: Create a DoublyLinkedList class with a head pointer.
 
-**STEP 4:** Sort the list `a` in descending order using `a.sort(reverse=True)`.
+STEP 4: Define a push method to insert a new node at the beginning of the list.
 
-**STEP 5:** Print the sorted list.
+STEP 5: Define an append method to insert a new node at the end of the list.
 
-**STEP 6:** Call the function `sortlist()`.
+STEP 6: Define a printList method to traverse and print the list forward and backward.
 
-**STEP 7:** Stop.
+STEP 7: In the main program, create a DoublyLinkedList object, add nodes using push and append, then print the list.
+
+
 
 ### Program:
 ```
-def sortlist():
-     a = eval(input())
-     a.sort(reverse=True)
-     print(a)
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+  
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+  
+    def push(self, new_data):
+        new_node = Node(new_data)
+        new_node.next = self.head
+        if self.head is not None:
+            self.head.prev = new_node
+        self.head = new_node
+        
+    def append(self, new_data):
+        new_node = Node(new_data)
+        if self.head is None:
+            self.head = new_node
+            return
+        last = self.head
+        while last.next:
+            last = last.next
+        last.next = new_node
+        new_node.prev = last
+        return
+  
+    def printList(self, node):
+        print("\nTraversal in forward direction")
+        last = None
+        while node:
+            print(node.data)
+            last = node
+            node = node.next
+
+        print("\nTraversal in reverse direction")
+        while last:
+            print(last.data)
+            last = last.prev
+  
+llist = DoublyLinkedList()
+  
+llist.append(6)
+llist.push(7)
+llist.push(1)
+llist.append(4)
+print("Created DLL is: ")
+llist.printList(llist.head)
 
 ```
 ### OUTPUT:
-![image](https://github.com/user-attachments/assets/f5457e85-36de-4142-890d-717d2dc1ec7c)
+![image](https://github.com/user-attachments/assets/227de075-f37d-4d0a-8d9b-417a47152de7)
 
 ### Result: Thus, the given program is implemented and executed successfully .
 
-# ExNo: 3.4 Tuples
-### Aim: To write a python program to create the tuple by the multiples of 5 up to N. Get the N value from the user.
+# ExNo: 11.4 Doubly Linked List (Insertion and all operation)
+
+### Aim: To Type a python function to insert words at the beginning and display the sentence in forward and reverse direction. 
+
 ### Algorithm:
 
-**STEP 1:** Start.
+STEP 1: Start.
 
-**STEP 2:** Create a variable `a`.
+STEP 2: Create a Node class with data, next, and prev attributes.
 
-**STEP 3:** Get the value of `a` from the user.
+STEP 3: Create a DoublyLinkedList class with a head pointer.
 
-**STEP 4:** Create an empty list `l`.
+STEP 4: Define a push method to add a new node at the beginning of the list.
 
-**STEP 5:** Use a `for` loop to iterate from 5 to `a` (exclusive) in steps of 5:
-- Append each number to the list `l`.
+STEP 5: Define a printList method to print the list forward and backward.
 
-**STEP 6:** Convert the list `l` to a tuple `x`.
+STEP 6: In the main program, read the number of words, use push to add each word at the start.
 
-**STEP 7:** Print the tuple `x`.
-
-**STEP 8:** Stop.
+STEP 7: Call printList to display the list in forward and reverse order, then stop.
 
 ### Program:
 ```
-def sortlist():
-     a = eval(input())
-     a.sort(reverse=True)
-     print(a)
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+  
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+  
+    def push(self, new_data):
+        new_node=Node(new_data)
+        new_node.next=self.head
+        if self.head is not None:
+            self.head.prev=new_node
+        self.head=new_node
+        
+    def printList(self, node):
+        print("\nTraversal in forward direction")
+        while node:
+          
+            print(node.data, end=" ")
+            last = node
+            node = node.next
+        print("\nTraversal in reverse direction")
+        while last:
+           
+            print(last.data, end=" ")
+            last = last.prev
+            
+llist = DoublyLinkedList()
+  
+x = int(input("Enter the number of words to display.\n"))
+for i in range(x):
+    a = input("Enter the data to push\n")
+    llist.push(a)
+
+llist.printList(llist.head)
 
 ```
 ### OUTPUT:
-![image](https://github.com/user-attachments/assets/60fa3c68-0f59-4bc5-bfc1-3629fefff45b)
+![image](https://github.com/user-attachments/assets/69ed985e-6b60-4d5f-815a-6f7f983bcead)
 
 ### Result: Thus, the given program is implemented and executed successfully .
